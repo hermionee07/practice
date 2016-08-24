@@ -287,3 +287,5 @@ paket-files/
 *.dSYM/
 *.su
 
+# CMake build folder
+[Bb]uild/
