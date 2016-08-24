@@ -8,6 +8,7 @@ struct Node
 {
     int data;
     Node* next;
+
 };
 
 Node* BuildNumber(int* num, int len);
@@ -23,3 +24,5 @@ Node* recurse(Node* first, Node* sec, int& carry);
 void recurse_LL(Node* node, int& carry, int& len);
 
 Node* addNumbers_withoutPadding0(Node* first, Node* sec);
+
+bool isPalindrome(Node* ll);

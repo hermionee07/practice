@@ -180,6 +180,28 @@ int LL_add()
     return 0;
 }
 
+
+void check_Palin()
+{
+    int sec[] = { 5, 4,6,7 };
+    int fourth[] = { 5, 4,4,5};
+    int first[] = { 1, 2,5,7,5,2,1 };
+    int third[] = { 1, 2,5,7,5,2,1 ,3,4};
+    Node* secLL = BuildNumber(sec, 4);
+    Node* firstLL = BuildNumber(first, 7);
+    Node* thirdLL = BuildNumber(third, 9);
+    Node* fourthLL = BuildNumber(fourth, 4);
+    int one[] = { 5 ,4};
+    Node* oneLL = BuildNumber(one, 2);
+    cout << "One " << (isPalindrome(oneLL) ? "is a" : " is not a") << " palindrome" << endl;
+    cout << "Sec " << (isPalindrome(secLL) ? "is a" : " is not a" ) << " palindrome" << endl;
+    cout << "fourth " << (isPalindrome(fourthLL) ? "is a" : " is not a") << " palindrome" << endl;
+    cout << "first " << (isPalindrome(firstLL) ? "is a" : " is not a") << " palindrome" << endl;
+    cout << "third " << (isPalindrome(thirdLL) ? "is a" : " is not a") << " palindrome" << endl;
+
+}
+
+
 int main(int argc, char* argv[])
 {
     if (argc != 2) {
@@ -191,6 +213,7 @@ int main(int argc, char* argv[])
     case 'l':       LL_add();      break;
     case 'm':       matrix();      break;
     case 'r':       reverse_s();    break;
+    case 'p':       check_Palin();    break;
 
     default:
         break;

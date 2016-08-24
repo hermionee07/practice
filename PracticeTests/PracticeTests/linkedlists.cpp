@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stack>
 #include "linkedlists.h"
 using namespace std;
 
@@ -158,3 +159,49 @@ Node* addNumbers_withoutPadding0(Node* first, Node* sec)
     }
 
 }
+
+// check if linked list is a palindrome
+bool isPalindrome(Node* ll)
+{
+    if (ll == nullptr) // empty 
+        return true;
+    else if (ll->next == nullptr) // only 1 
+        return true;
+    Node* temp = ll;
+    int len = 0;
+    while (temp != nullptr)
+    {
+        len++;
+        temp = temp->next;
+    }
+    temp = ll;
+    stack<int> myStack;
+    int i = 1;
+    while (i <= len / 2)
+    {
+        myStack.push(temp->data);
+        ++i;
+        temp = temp->next;
+    }
+
+    if (len%2 !=0) // this is odd
+    {
+        temp = temp->next;
+    }
+    while (temp != nullptr)
+    {
+        if (temp->data == myStack.top())
+        {
+            temp = temp->next;
+            myStack.pop();
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+
+
+// check palindrom without using additional memory.
+// can use stack memory.
