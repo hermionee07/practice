@@ -205,3 +205,7 @@ bool isPalindrome(Node* ll)
 
 // check palindrom without using additional memory.
 // can use stack memory.
+void isPalindrome_2(Node* head)
+{
+
+}

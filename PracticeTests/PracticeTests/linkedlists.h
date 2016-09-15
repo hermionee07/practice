@@ -26,3 +26,5 @@ void recurse_LL(Node* node, int& carry, int& len);
 Node* addNumbers_withoutPadding0(Node* first, Node* sec);
 
 bool isPalindrome(Node* ll);
+
+void isPalindrome_2(Node* head);

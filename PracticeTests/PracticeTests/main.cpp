@@ -2,6 +2,7 @@
 #include "stringstuff.h"
 #include "matrices.h"
 #include "linkedlists.h"
+#include "graphs.h"
 
 int sorts() {
     vector<int> vec = { 4, 5, 2, 6, 0, 7, 9, 1, 8, 10, 1 };
@@ -181,25 +182,52 @@ int LL_add()
 }
 
 
-void check_Palin()
-{
-    int sec[] = { 5, 4,6,7 };
-    int fourth[] = { 5, 4,4,5};
-    int first[] = { 1, 2,5,7,5,2,1 };
-    int third[] = { 1, 2,5,7,5,2,1 ,3,4};
-    Node* secLL = BuildNumber(sec, 4);
-    Node* firstLL = BuildNumber(first, 7);
-    Node* thirdLL = BuildNumber(third, 9);
-    Node* fourthLL = BuildNumber(fourth, 4);
-    int one[] = { 5 ,4};
-    Node* oneLL = BuildNumber(one, 2);
-    cout << "One " << (isPalindrome(oneLL) ? "is a" : " is not a") << " palindrome" << endl;
-    cout << "Sec " << (isPalindrome(secLL) ? "is a" : " is not a" ) << " palindrome" << endl;
-    cout << "fourth " << (isPalindrome(fourthLL) ? "is a" : " is not a") << " palindrome" << endl;
-    cout << "first " << (isPalindrome(firstLL) ? "is a" : " is not a") << " palindrome" << endl;
-    cout << "third " << (isPalindrome(thirdLL) ? "is a" : " is not a") << " palindrome" << endl;
 
+graph* createAGraph()
+{
+    gnode* a = new gnode("A");
+    gnode* b = new gnode("B");
+    gnode* c = new gnode("C");
+    gnode* d = new gnode("D");
+    gnode* e = new gnode("E");
+    gnode* f = new gnode("F");
+    gnode* g = new gnode("G");
+    gnode* h = new gnode("H");
+    gnode* z = new gnode("Z");
+    gnode* y = new gnode("Y");
+    gnode* x = new gnode("X");
+
+    
+    a->m_children.push_back(d);
+    a->m_children.push_back(e);
+    a->m_children.push_back(b);
+    b->m_children.push_back(e);
+    b->m_children.push_back(c);
+    c->m_children.push_back(f);
+    e->m_children.push_back(f);
+
+    graph* mygraph = new graph();
+    mygraph->m_nodes.push_back(a);
+    mygraph->m_nodes.push_back(b);
+    mygraph->m_nodes.push_back(c);
+    mygraph->m_nodes.push_back(d);
+    mygraph->m_nodes.push_back(e);
+    mygraph->m_nodes.push_back(f);
+    mygraph->m_nodes.push_back(z);
+    mygraph->m_nodes.push_back(y);
+    mygraph->m_nodes.push_back(x);
+
+    bool routeExist = RouteExists(mygraph, d, f);
+    cout << "Route found ? " << routeExist << endl;
+    gnode * found = DFSearch(mygraph, std::string("Y"));
+    if (found != nullptr)
+            cout << "found ... " << found->m_name << "..........";
+    int arr[10] = { 0,4,6,7,9,65,89,90,98,100 };
+    tnode* test = minimalBST(arr, 10);
+    int height = findHeight(test);
+    return mygraph;
 }
+
 
 
 int main(int argc, char* argv[])
@@ -213,8 +241,7 @@ int main(int argc, char* argv[])
     case 'l':       LL_add();      break;
     case 'm':       matrix();      break;
     case 'r':       reverse_s();    break;
-    case 'p':       check_Palin();    break;
-
+    case 'g':       createAGraph(); break;// do something with graphs.
     default:
         break;
     }

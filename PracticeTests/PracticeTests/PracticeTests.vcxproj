@@ -150,13 +150,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="graphs.cpp" />
     <ClCompile Include="linkedlists.cpp" />
+    <ClCompile Include="LRUcache.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrices.cpp" />
     <ClCompile Include="sorting.cpp" />
     <ClCompile Include="stringstuff.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="graphs.h" />
     <ClInclude Include="linkedlists.h" />
     <ClInclude Include="matrices.h" />
     <ClInclude Include="sorting.h" />

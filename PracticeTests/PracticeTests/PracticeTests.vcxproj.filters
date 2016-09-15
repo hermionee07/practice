@@ -30,6 +30,9 @@
     <ClCompile Include="linkedlists.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="graphs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sorting.h">
@@ -43,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="linkedlists.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="graphs.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
