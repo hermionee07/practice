@@ -225,6 +225,25 @@ graph* createAGraph()
     int arr[10] = { 0,4,6,7,9,65,89,90,98,100 };
     tnode* test = minimalBST(arr, 10);
     int height = findHeight(test);
+    int hh;
+    tnode *root = new tnode(1);
+    tnode *qq = new tnode(10);
+    tnode *ww = new tnode(11);
+    tnode *ee = new tnode(12);
+    tnode *rr = new tnode(13);
+    tnode *tt = new tnode(14);
+    tnode *yy = new tnode(15);
+    tnode *uu = new tnode(16);
+
+    root->m_left = qq;
+    qq->m_left = ee;
+    root->m_right = ww;
+    ee->m_left = rr;
+    rr->m_left = tt;
+    tt->m_left = yy;
+    yy->m_left = uu;
+
+    bool is_b = isBalanced(root, hh);
     return mygraph;
 }
 

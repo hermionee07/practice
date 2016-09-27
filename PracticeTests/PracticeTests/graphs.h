@@ -45,3 +45,9 @@ tnode* createMinimalBST(int* temp, int i, int j);
 tnode* minimalBST(int* temp, int len);
 
 int findHeight(tnode* root);
+
+// find if its a balanced binary tree.
+// a balanced binary tree has the max difference
+// of the lenght of the leaf node is not more than 1.
+
+bool isBalanced(tnode * root, int & height);

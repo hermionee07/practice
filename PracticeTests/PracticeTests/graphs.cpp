@@ -96,7 +96,7 @@ gnode* DFSearch(graph* mygraph, string item)
             return ret;
     }
 
-    return nullptr;
+return nullptr;
 }
 
 // Directed graph, check if there is a route 
@@ -145,9 +145,9 @@ tnode* createMinimalBST(int* temp, int i, int j)
 
     int mid = (i + j) / 2;
 
-    tnode* left = createMinimalBST(temp, i, mid-1);
-    tnode* right = createMinimalBST(temp, mid+1, j);
-    tnode* center = new tnode(*(temp+mid));
+    tnode* left = createMinimalBST(temp, i, mid - 1);
+    tnode* right = createMinimalBST(temp, mid + 1, j);
+    tnode* center = new tnode(*(temp + mid));
     center->m_left = left;
     center->m_right = right;
 
@@ -177,3 +177,33 @@ int findHeight(tnode* root)
     return a > b ? a + 1 : b + 1;
 
 }
+
+bool isBalanced(tnode * root, int & height)
+{
+    if (root == nullptr)
+    {
+        height = -1;
+        return false;
+    }
+    if (root->m_left == nullptr && root->m_right == nullptr)
+    {
+        height = 0;
+        return true;
+    }
+    int left;
+    bool leftb = isBalanced(root->m_left, left);
+    int right;
+    bool rightb = isBalanced(root->m_right, right);
+
+    height = left > right ? left + 1 : right + 1;
+
+    if (abs(left - right) == 0 || abs(left - right) == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
