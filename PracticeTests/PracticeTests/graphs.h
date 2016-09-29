@@ -1,3 +1,4 @@
+#include "linkedlists.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -51,3 +52,6 @@ int findHeight(tnode* root);
 // of the lenght of the leaf node is not more than 1.
 
 bool isBalanced(tnode * root, int & height);
+
+// create a linked list for all every nodes
+vector<Node*> createLLForEachDepth(tnode* root);

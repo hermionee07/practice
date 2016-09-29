@@ -224,6 +224,7 @@ graph* createAGraph()
             cout << "found ... " << found->m_name << "..........";
     int arr[10] = { 0,4,6,7,9,65,89,90,98,100 };
     tnode* test = minimalBST(arr, 10);
+    auto vec = createLLForEachDepth(test);
     int height = findHeight(test);
     int hh;
     tnode *root = new tnode(1);

@@ -1,4 +1,5 @@
 #include "graphs.h"
+#include <utility>
 #include <queue>
 
 gnode* BFSearch(graph * mygraph, string item)
@@ -206,4 +207,64 @@ bool isBalanced(tnode * root, int & height)
         return false;
     }
 }
+
+void createLL(vector<Node*> &vec, int data, int level)
+{
+    if (vec.size() >= level) // when there is already a node of that level
+    {
+        auto leadNode = vec[level];
+        if (leadNode == nullptr)
+        {
+            Node* newNode = new Node();
+            newNode->data = data;
+            newNode->next = nullptr;
+            vec[level] = newNode;
+        }
+        else
+        {
+            auto curr = leadNode;
+            while (curr->next != nullptr)
+            {
+                curr = curr->next;
+            }
+            Node* newNode = new Node();
+            newNode->data = data;
+            newNode->next = nullptr;
+            curr->next = newNode;
+        }
+        
+    }
+}
+
+vector<Node*> createLLForEachDepth(tnode *root)
+{
+    queue<pair<tnode*, int>> myq;
+    int height = findHeight(root);
+    vector<Node*> myvec(height+1); // this should be the height of the tree.
+    int level = 0;
+    if (root != nullptr)
+    {
+        myq.push(std::pair<tnode*, int>(root, level));
+    }
+    
+    while (!myq.empty())
+    {
+        auto data = myq.front().first;
+        int currLevel = myq.front().second;
+        createLL(myvec, data->m_value, currLevel);
+
+        if (data->m_left != nullptr)
+        {
+            myq.push(std::pair<tnode*, int>(data->m_left, currLevel+1));
+        }
+        if (data->m_right != nullptr)
+        {
+            myq.push(std::pair<tnode*, int>(data->m_right, currLevel+1));
+        }
+        myq.pop();
+            
+    }
+    return myvec;
+}
+
 
