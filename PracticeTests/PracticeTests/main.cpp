@@ -181,7 +181,45 @@ int LL_add()
     return 0;
 }
 
+tnode* createATree()
+{
+    tnode* a9 = new tnode(9);
+    tnode* b4 = new tnode(4);
+    tnode* c90 = new tnode(90);
+    tnode* d0 = new tnode(0);
+    tnode* e6 = new tnode(6);
+    tnode* f7 = new tnode(7);
+    tnode* g98 = new tnode(98);
+    tnode* h65 = new tnode(65);
+    tnode* i89 = new tnode(89);
+    tnode* j100 = new tnode(100);
 
+    a9->m_left = b4;
+    a9->m_right = c90;
+    b4->m_left = d0;
+    b4->m_right = e6;
+    b4->m_parent = a9;
+
+    d0->m_parent = b4;
+    e6->m_parent = b4;
+    e6->m_right = f7;
+    f7->m_parent = e6;
+
+    c90->m_left = h65;
+    c90->m_parent = a9;
+    c90->m_right = g98;
+    h65->m_right = i89;
+    h65->m_parent = c90;
+    i89->m_parent = h65;
+
+    g98->m_parent = c90;
+    g98->m_right = j100;
+    j100->m_parent = g98;
+
+    tnode * t = findInorderSuccessor(i89);
+
+    return a9;
+}
 
 graph* createAGraph()
 {
@@ -224,6 +262,8 @@ graph* createAGraph()
             cout << "found ... " << found->m_name << "..........";
     int arr[10] = { 0,4,6,7,9,65,89,90,98,100 };
     tnode* test = minimalBST(arr, 10);
+    tnode * rrr = createATree();
+
     auto vec = createLLForEachDepth(test);
     int height = findHeight(test);
     int hh;

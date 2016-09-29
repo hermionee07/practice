@@ -267,4 +267,37 @@ vector<Node*> createLLForEachDepth(tnode *root)
     return myvec;
 }
 
+// returns the root for which this node lies 
+// on the left subtree
+tnode* findRootOfSubtree(tnode* node)
+{
+    if (node->m_parent == nullptr || node == nullptr)
+        return nullptr;
+    if (node->m_parent->m_left == node)
+        return node->m_parent;
+    else
+        return findRootOfSubtree(node->m_parent);
+}
+
+tnode * findInorderSuccessor(tnode * node)
+{
+    if (node == nullptr)
+        return nullptr;
+    if (node->m_left == nullptr && node->m_right == nullptr) // leaf node
+    {
+        if (node->m_parent->m_left == node)// left child of the parent
+        {
+            return node->m_parent;
+        }
+        else
+        {
+            return findRootOfSubtree(node);
+        }
+    }
+    if (node->m_left == nullptr && node->m_right != nullptr)
+        return node->m_right;
+    if (node->m_left != nullptr && node->m_right != nullptr)
+        return node->m_parent;
+}
+
 

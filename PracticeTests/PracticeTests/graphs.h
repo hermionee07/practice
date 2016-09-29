@@ -38,7 +38,8 @@ public:
     tnode* m_left;
     tnode* m_right;
     bool m_visited;
-    tnode(int a) : m_value(a), m_left(nullptr), m_right(nullptr) {}
+    tnode* m_parent;
+    tnode(int a) : m_value(a), m_left(nullptr), m_right(nullptr), m_parent(nullptr) {}
 };
 
 tnode* createMinimalBST(int* temp, int i, int j);
@@ -53,5 +54,8 @@ int findHeight(tnode* root);
 
 bool isBalanced(tnode * root, int & height);
 
-// create a linked list for all every nodes
+// create a linked list for all every nodes in the same level
 vector<Node*> createLLForEachDepth(tnode* root);
+
+// Find inorder successor of a BST
+tnode* findInorderSuccessor(tnode * node);
