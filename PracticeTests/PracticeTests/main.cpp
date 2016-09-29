@@ -216,6 +216,15 @@ tnode* createATree()
     g98->m_right = j100;
     j100->m_parent = g98;
 
+    tnode* i = new tnode(4);
+    tnode* j = new tnode(0);
+    tnode* k = new tnode(6);
+    tnode* l = new tnode(7);
+    i->m_left = j;
+    i->m_right = k;
+    k->m_right = l;
+
+    bool tt = isSubtree(a9, i);
     tnode * t = findInorderSuccessor(i89);
 
     return a9;

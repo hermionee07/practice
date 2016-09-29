@@ -59,3 +59,7 @@ vector<Node*> createLLForEachDepth(tnode* root);
 
 // Find inorder successor of a BST
 tnode* findInorderSuccessor(tnode * node);
+
+// Find if a large binary tree is a subtree of another large binary tree.
+
+bool isSubtree(tnode* small, tnode* big);

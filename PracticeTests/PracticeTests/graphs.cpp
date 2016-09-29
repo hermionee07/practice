@@ -300,4 +300,33 @@ tnode * findInorderSuccessor(tnode * node)
         return node->m_parent;
 }
 
+bool matchTree(tnode* big, tnode* small)
+{
+    if (big == nullptr && small == nullptr)
+        return true;
+    if (big->m_value != small->m_value) // if ever the values are not equal
+        return false;                   // they arent equal.
+    // if the values are equal then match the left and right subtrees too.
+    matchTree(big->m_left, small->m_left) && matchTree(big->m_right, small->m_right);
+}
+
+bool isSubtree(tnode * bigRoot, tnode * smallRoot)
+{
+    if (bigRoot != nullptr && smallRoot != nullptr) // if good input
+    {
+        if (bigRoot->m_value == smallRoot->m_value) // values are equal
+        {
+            return matchTree(bigRoot, smallRoot); // now match the subtrees
+        }
+        else // values arent equal, so search for the equal values first.
+        {    // and then match.
+            isSubtree(bigRoot->m_left, smallRoot) || isSubtree(bigRoot->m_right, smallRoot);
+        }
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
