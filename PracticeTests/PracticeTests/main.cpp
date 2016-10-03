@@ -272,7 +272,8 @@ graph* createAGraph()
     int arr[10] = { 0,4,6,7,9,65,89,90,98,100 };
     tnode* test = minimalBST(arr, 10);
     tnode * rrr = createATree();
-
+    //auto aaaa = findPaths(test, 13);
+    tnode* hhhh = BasicDFS(test, 100);
     auto vec = createLLForEachDepth(test);
     int height = findHeight(test);
     int hh;
@@ -294,6 +295,8 @@ graph* createAGraph()
     yy->m_left = uu;
 
     bool is_b = isBalanced(root, hh);
+
+
     return mygraph;
 }
 

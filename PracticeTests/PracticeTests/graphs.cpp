@@ -316,7 +316,7 @@ bool isSubtree(tnode * bigRoot, tnode * smallRoot)
     {
         if (bigRoot->m_value == smallRoot->m_value) // values are equal
         {
-            return matchTree(bigRoot, smallRoot); // now match the subtrees
+            return matchTree(bigRoot, smallRoot);   // now match the subtrees
         }
         else // values arent equal, so search for the equal values first.
         {    // and then match.
@@ -329,4 +329,111 @@ bool isSubtree(tnode * bigRoot, tnode * smallRoot)
     }
 }
 
+void findPaths(tnode * root, int value, vector<vector<tnode*>>& vec, int& sum )
+{
+    //if (root == nullptr) // bad root
+    //    return;
+    //if (sum == value)
+    //{
 
+    //    return;
+    //}
+    //findPaths(root->m_left, value, vec, sum + root->m_value);
+    //findPaths(root->m_right, value, vec, sum + root->m_value);
+    //
+}
+
+void pathFinder(tnode* root, int sum, vector<vector<tnode*>> &vec, vector<tnode*> &buffer, int sumTillNow)
+{
+    if (root == nullptr && sumTillNow != sum)
+    {
+        return;
+    }
+    if (root->m_left == nullptr && root->m_right == nullptr) // leaf node
+    {
+        if (sumTillNow != sum)
+        {
+            if (!buffer.empty())
+            {
+                auto a = buffer.back();
+                sumTillNow = sumTillNow - a->m_value;
+                buffer.pop_back();
+            }
+            return;
+        }
+        else
+        {
+            vec.push_back(buffer);
+            buffer.clear();
+            return;
+        }
+    }
+    if (root == nullptr && sumTillNow == sum)
+    {
+        vec.push_back(buffer);
+        buffer.clear();
+        return;
+    }
+    if (root == nullptr && sumTillNow != sum)
+    {
+        //buffer.clear();
+        if (!buffer.empty())
+        {
+            auto a = buffer.back();
+            sumTillNow = sumTillNow - a->m_value;
+            buffer.pop_back();
+        }
+        return;
+    }
+    else
+    {
+        buffer.push_back(root);
+        sumTillNow = sumTillNow + root->m_value;
+        if (sumTillNow == sum)
+        {
+            vec.push_back(buffer);
+            buffer.clear();
+            return;
+        }
+        else
+        {
+            pathFinder(root->m_left, sum, vec,  buffer, sumTillNow);
+           
+            pathFinder(root->m_right, sum, vec,  buffer, sumTillNow);
+            
+        }
+    }
+}
+vector<vector<tnode*>> findPaths(tnode* root, int sum)
+{
+    vector<vector<tnode*>> vec;
+    vector<tnode*> buffer;
+    int sumTillNow = 0;
+    pathFinder(root, sum, vec, buffer, sumTillNow);
+    return vec;
+}
+
+// Basic DFS with a binary tree.
+tnode* BasicDFS(tnode* root, int a)
+{
+    if (root == nullptr)
+        return nullptr;
+    root->m_visited = true;
+    cout << root->m_value << " ";
+    if (root->m_value == a)
+    {
+        return root;
+    }
+    auto t = BasicDFS(root->m_left, a);
+    if (t != nullptr)
+    {
+        return t;
+    }
+    else
+    {
+        t = BasicDFS(root->m_right, a);
+        if (t != nullptr)
+            return t;
+    }
+
+}

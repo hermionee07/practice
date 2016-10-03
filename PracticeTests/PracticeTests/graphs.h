@@ -61,5 +61,14 @@ vector<Node*> createLLForEachDepth(tnode* root);
 tnode* findInorderSuccessor(tnode * node);
 
 // Find if a large binary tree is a subtree of another large binary tree.
-
 bool isSubtree(tnode* small, tnode* big);
+
+// Find all the paths through a tree which sums up to a value.
+// The path starts from the root, the path doesnt have to end at a leaf.
+// Needs improvement - doesnt list all the paths possible.
+// list the first path it finds.
+void findPaths(tnode * root, int value, vector<vector<tnode*>>& vec, int &sum);
+
+vector<vector<tnode*>> findPaths(tnode* root, int sum);
+
+tnode* BasicDFS(tnode* root, int a);
