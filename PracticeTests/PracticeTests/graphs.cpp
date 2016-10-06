@@ -435,5 +435,56 @@ tnode* BasicDFS(tnode* root, int a)
         if (t != nullptr)
             return t;
     }
+}
+
+void findNoOfPaths(tnode* qq)
+{
+    queue<tnode*> myq;
+    myq.push(qq);
+    while (!myq.empty())
+    {
+        auto a = myq.front();
+        myq.pop();
+        if (a != nullptr)
+        {
+            int sumtillnow = 0;
+            int paths = 0;
+            vector<tnode*> vec;
+            findNumberOfPaths(a, 9, sumtillnow, paths, vec);
+            myq.push(a->m_left);
+            myq.push(a->m_right);
+        }
+    }
+}
+
+// find the number of paths which sum up to a number
+// starts from a particular node.
+void findNumberOfPaths(tnode* root, int sum, int &sumTillNow, int &paths, vector<tnode*>& vec)
+{
+    if (root == nullptr)
+        return ;
+    vec.push_back(root);
+    sumTillNow += root->m_value;
+    if (sum == sumTillNow)
+    {
+        for (auto a : vec)
+            cout << a->m_value << "...";
+        ++paths;
+        cout << endl;
+    }
+
+    findNumberOfPaths(root->m_left, sum, sumTillNow, paths, vec);
+    if (root->m_left != nullptr)
+    {
+        vec.pop_back();
+        sumTillNow = sumTillNow - root->m_left->m_value;
+    }
+   findNumberOfPaths(root->m_right, sum, sumTillNow, paths, vec);
+   if (root->m_right != nullptr)
+   {
+       vec.pop_back();
+       sumTillNow = sumTillNow - root->m_right->m_value;
+   }
+    return;
 
 }

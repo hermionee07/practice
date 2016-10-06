@@ -72,3 +72,7 @@ void findPaths(tnode * root, int value, vector<vector<tnode*>>& vec, int &sum);
 vector<vector<tnode*>> findPaths(tnode* root, int sum);
 
 tnode* BasicDFS(tnode* root, int a);
+
+void findNoOfPaths(tnode* qq);
+
+void findNumberOfPaths(tnode* root, int sum, int& sumTillNow, int&paths, vector<tnode*>& vec);

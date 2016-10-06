@@ -226,7 +226,29 @@ tnode* createATree()
 
     bool tt = isSubtree(a9, i);
     tnode * t = findInorderSuccessor(i89);
+    tnode* qq = new tnode(4);
+    tnode* ww = new tnode(0);
+    tnode* ee = new tnode(6);
+    tnode* rr = new tnode(5);
+    tnode* ttt = new tnode(1);
 
+    tnode* eee = new tnode(0);
+    tnode* rre = new tnode(-1);
+    tnode* ttte = new tnode(1);
+    qq->m_left = ww;
+    qq->m_right = ee;
+    ww->m_left = rr;
+    rr->m_right = ttt;
+    ttt->m_right = new tnode(0);
+    ee->m_right = eee;
+    eee->m_left = rre;
+    rre->m_right = ttte;
+
+    int sumtillnow = 0;
+    int paths = 0;
+    vector<tnode*> vec;
+    //findNumberOfPaths(qq, 6, sumtillnow, paths, vec);
+    findNoOfPaths(qq);
     return a9;
 }
 
